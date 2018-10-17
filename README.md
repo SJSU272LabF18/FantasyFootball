@@ -25,7 +25,9 @@ Methodology:
 Node.js, Express, and MongoDB
 Classify clusters using various nearest neighbors algorithms such as kNN, LSH. Use Google Maps API to visualize data as well as clusters.
 
+
 Project Idea 2 Title: 
+
 Learning Resources Sharing Platform
 
 Project Description:
