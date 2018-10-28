@@ -9,7 +9,10 @@ Project Team-2
 ## Project Title: 
 High Risk Accident Areas
 ## Project Description:
-Using Google Maps and nearest neighbor algorithms, the application will cluster different areas of Maryland into various classes of risk zones. 
+Using Google Maps and nearest neighbor algorithms, the application will cluster different areas of Maryland into various classes of risk zones.  
+
+## Comments: Why just Meryland? do you have datasets available for bay area?  - APPROVED if you can do for bay area
+
 ## Proposed Methodology/Resources:
 ### Resources:
 A crash dataset consisting of 77,791 rows and attributes:
