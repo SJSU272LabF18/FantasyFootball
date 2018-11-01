@@ -30,13 +30,15 @@ Classify clusters using various nearest neighbors algorithms such as kNN, LSH. U
 
 
 ## Project Idea 2 Title: 
-Learning Resources Sharing Platform
+Fantasy Football Team Creator
 ## Project Description:
-Based on users’ fields of interests, the application recommends the best learning resources shared by others such as online courses, books and podcasts to users. The platform keeps a chart for each specific subject. Users can upvote, downvote, comment, and share new resources
+Creates the ideal team based on currently available players. Normalizes each player's statistics with their team's overall performance so that players in excelling teams do not outweigh other players. Users may input players who have been taken and the system to consider only the remaining the players to pick the best team. 
 ## Proposed Methodology/Resources:
 ### Resources:
-For books, amazon and goodreads rating can be fetched from their APIs.
-For Online Courses and podcasts, ratings from original platform can be fetched.
+1672 player stats from 2014 - 2017 with attributes:
+Name, Pos, Team, Year, Games Plyd, Rush, Rush Yards, Rush TD, Target, Catch, Catch yards, Catch TD, Pass, Complete, Pass Yards, Pass TD, Int, Fum
+http://thehuddle.com/fantasy_football_statistics_archive.php
 
 ### Development Stack:
 MERN- MongoDB, Express, React, Node
+Identify players with high performance relative to their teams using unsupervised clustering algorithms such as kmeans. 
