@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<head>
+    <title>Fantasy Football</title>
+</head>
+
+<body>
+    <h1>Player Details</h1>
+    <br>
+        
+    <div class="row">
+        <p>Detail of a player</p>
+        <div class="column">
+            <img src="James_Butler.JPG" style="width: 200px; height: auto">
+        </div>
+        <div class="column">
+            <ul>
+                <li>Name: </li>
+                <li>Position: </li>
+                <li>Rank: </li>
+                <li>Team Played: </li>
+                <li>Score: </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <p>Analysis:</p>
+    </div>
+    
+</body>
+</html>
