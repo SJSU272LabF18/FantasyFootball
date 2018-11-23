@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<style>
+    img:focus{
+        border-style: solid;
+        border-width: 10px;
+        border-color: green;
+    }
+</style>
+<head>
+    <title>Fantasy Football</title>
+</head>
+<body>
+    <h1>Recommand Team</h1>
+    <br>
+    <a href="playerPool.html"><button>View Players</button></a>
+    <form>
+        <input type="radius" name="firstname" value="Mickey"><br>
+        <input type="text" name="lastname" value="Mouse"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+    <div>
+        <img src="James_Butler.JPG" style="width: 250px; height: 250px" usemap="#player">
+        <img src="Mike_Hart.JPG" style="width: 250px; height: 250px" usemap="#player">
+        <img src="Richard_Quinn.JPG" style="width: 250px; height: 250px" usemap="#player">
+        <map name="player">
+            <area shape="rect" coords="0,0, 250, 250" onchange="focus">
+        </map>
+    </div>
+    <div>
+        <button>Lock in player</button>
+        <button>Remove Player</button>
+    </div>
+    
+</body>
+</html>
