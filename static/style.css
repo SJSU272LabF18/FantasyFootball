@@ -1,0 +1,40 @@
+body{
+	height: 100%;
+	background-image: url("background.jpg");
+	background-size: 100%;
+	
+
+}
+.jumbotron{
+	
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 1000px;
+	text-align: center;
+	/*background: linear-gradient(120deg, #8e98ad, #ccdce8, #7a8bbc);*/
+	background-color: rgba(255, 255, 255, 0.8);
+	
+	border-radius: 15px;
+	box-shadow: 0px 2px 20px 1px #222;
+}
+
+.btn{
+	font-size: 3em;
+	border-radius: 15px;
+	border: #58627a solid 9px;
+	color: #58627a;
+	font-weight: bold;
+}
+.btn:hover{
+	background-color: #58627a;
+	color: #fff;
+}
+hr{
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+.jumbotron h1{ 
+	
+	font-weight: bold;
+}
