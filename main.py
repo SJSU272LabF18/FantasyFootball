@@ -23,9 +23,9 @@ def detail(player_id):
 	player, player_record = a1.get_player_details(player_id)
 	return render_template('detail.html',data = {"player":player,"player_record":player_record})
 
-
-
+@app.route("/newTeam")
+def newteam():
+    return render_template('newTeam.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
-
