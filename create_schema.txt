@@ -29,6 +29,7 @@ CREATE TABLE player_year_stats (
   fumbles int(11) DEFAULT NULL,
   id int(11) NOT NULL AUTO_INCREMENT,
   player_id int(11) DEFAULT NULL,
+  points decimal(65,0) DEFAULT NULL,
   PRIMARY KEY (id),
   KEY player_id_idx (player_id),
   CONSTRAINT player_id FOREIGN KEY (player_id) REFERENCES players (id) ON DELETE NO ACTION ON UPDATE NO ACTION
