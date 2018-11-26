@@ -1,0 +1,5 @@
+data
+http://thehuddle.com/fantasy_football_statistics_archive.php
+
+scores
+https://fantasydata.com/developers/fantasy-scoring-system/nfl
