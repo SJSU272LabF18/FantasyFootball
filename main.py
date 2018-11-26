@@ -25,7 +25,7 @@ def detail(player_id):
 
 @app.route("/newTeam")
 def newteam():
-    return render_template('newTeam.html')
+    return render_template('newTeam.html', data = '')
 
 if __name__ == '__main__':
     app.run(debug=True)
