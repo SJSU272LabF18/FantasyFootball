@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template,redirect, url_for,session
-
+from sklearn.linear_model import LinearRegression
 from flask_mysqldb import MySQL
+import numpy as np
+
 class Analyze:
 	def __init__(self, app):
 		self.app = app
@@ -14,7 +16,18 @@ class Analyze:
 
 
 	def pick_best_team(self, excluded_player_ids):
-		return []
+		pos_dict = {}
+		mycursor = self.mysql.connection.cursor()
+		sql = "SELECT players.id, pos, predicted_score FROM players JOIN player_year_stats ON players.id = player_year_stats.player_id group by pos,players.id"
+		mycursor.execute(sql)
+		myresult = mycursor.fetchall()
+		final_result = []
+
+		for result in myresult:
+			final_result.append(result)
+			print(result)
+		#print(val)
+		return final_result
 
 	def get_sorted_players(self, sort_by = "pos"):
 		mycursor = self.mysql.connection.cursor()
@@ -50,3 +63,39 @@ class Analyze:
 
 
 		return player_detail,final_result
+
+	def update_all_player_stats(self,year):
+
+		player_dict = {}
+
+		mycursor = self.mysql.connection.cursor()
+		sql = "SELECT player_id, year, points FROM player_year_stats"
+		
+		#print(val)
+		mycursor.execute(sql)
+		myresult = mycursor.fetchall()
+		final_result = []
+		for result in myresult:
+			if result[0] in player_dict:
+				player_dict[result[0]].append(list(result))
+			else:
+				player_dict[result[0]] = [result]
+		for key, value in player_dict.items():
+			scores = []
+			years = []
+			for year_stat in value:
+				years.append([year_stat[1]])
+				scores.append([float(year_stat[2])])
+			#print(scores)
+			#print(years)
+			reg = LinearRegression().fit(years, scores)
+			prediction = reg.predict(np.array([year]).reshape(-1, 1))
+			print(prediction)
+
+			mycursor = self.mysql.connection.cursor()
+			sql = "UPDATE players SET predicted_score = %s WHERE id = %s"
+			mycursor.execute(sql,[float(prediction[0][0]), key])
+
+		self.mysql.connection.commit()
+
+		return final_result

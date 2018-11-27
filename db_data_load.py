@@ -4,7 +4,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  passwd="root",
+  passwd="!@)59380",
   database="footballStats"
 )
 def load_data(filename):
@@ -48,6 +48,7 @@ def load_data(filename):
 					mycursor.execute(sql, [val[1], val[0]])
 				else:
 					mycursor.execute(sql, val)
+
 
 				mydb.commit()
 				player_id = mycursor.lastrowid
@@ -100,6 +101,7 @@ def load_data(filename):
 				print(points)
 				sql = "INSERT INTO player_year_stats (player_id, pos, team, year, games_played, rush, rush_yards, rush_td, target, catch, catch_yards, catch_td, pass, complete, pass_yards, pass_td, interceptions, fumbles, points) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, "+str(points)+") "
 				mycursor.execute(sql, [player_id]+row_with_zeros[1:])
+
 
 				mydb.commit()
 
