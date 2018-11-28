@@ -2,7 +2,17 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="../static/newteam.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+            
+            $( document ).ready(function() {
+                
+                $(".changePlayer").change(function(){
+                    alert("chagned");
+                });
+            });
+        </script>
         <title>Fantasy Football</title>
     </head>
     <style media="screen">
@@ -22,47 +32,78 @@
         </div>
         <div class="pt-3 text-center">
             <div class="card-group d-inline-flex text-center">
+                
+                 
+                
                         <div class="card">
+                            <h1>{{data["teams"][0]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='James_Butler.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">James_Butler</h5>
+                                <h5 class="card-title">{{data["bestQBs"][0]}}</h5>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
+                                    <select class = "changePlayer" id = "changeQB" name="player">
+                                        
+                                        {%for player in data["bestQBs"]:%}
+                                            
+                                            <option value = "{{player}}">{{player}}</option>
+                                            
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
+                            <h1>{{data["teams"][1]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='Mike_Hart.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">Mike_Hart</h5>
+                                <h5 class="card-title">{{data["bestRBs"][0]}}</h5>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
+                                    <select class = "changePlayer" id = "changeRB" name="player">
+                                        
+                                        {%for player in data["bestRBs"]:%}
+                                            
+                                            <option value = "{{player}}">{{player}}</option>
+                                            
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
+                            <h1>{{data["teams"][2]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='Richard_Quinn.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">Richard_Quinn</h5>
+                                <h5 class="card-title">{{data["bestWRs"][0]}}</h5>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
+                                    <select class = "changePlayer" id = "changeWR" name="player">
+                                        
+                                        {%for player in data["bestWRs"]:%}
+                                            
+                                            <option value = "{{player}}">{{player}}</option>
+                                            
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
+                            <h1>{{data["teams"][3]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='Jason_Taylor.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">Jason_Taylor</h5>
+                                <h5 class="card-title">{{data["bestTEs"][0]}}</h5>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
+                                    <select class = "changePlayer" id = "changeTE" name="player">
+                                        
+                                        {%for player in data["bestTEs"]:%}
+                                            
+                                            <option value = "{{player}}">{{player}}</option>
+                                            
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                         </div>

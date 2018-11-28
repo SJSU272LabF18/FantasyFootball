@@ -18,16 +18,21 @@ class Analyze:
 	def pick_best_team(self, excluded_player_ids):
 		pos_dict = {}
 		mycursor = self.mysql.connection.cursor()
-		sql = "SELECT players.id, pos, predicted_score FROM players JOIN player_year_stats ON players.id = player_year_stats.player_id group by pos,players.id"
+		sql = "SELECT players.id, pos, firstname, lastname, predicted_score FROM players JOIN player_year_stats ON players.id = player_year_stats.player_id group by pos,players.id"
 		mycursor.execute(sql)
 		myresult = mycursor.fetchall()
-		final_result = []
 
 		for result in myresult:
-			final_result.append(result)
-			print(result)
+			if result[1] in pos_dict:
+				pos_dict[result[1]].append(list(result))
+			else:
+				pos_dict[result[1]] = [list(result)]
+			#print(result)
 		#print(val)
-		return final_result
+		for key, value in pos_dict.items():
+			pos_dict[key].sort(key=lambda x:-x[4])
+			
+		return pos_dict
 
 	def get_sorted_players(self, sort_by = "pos"):
 		mycursor = self.mysql.connection.cursor()

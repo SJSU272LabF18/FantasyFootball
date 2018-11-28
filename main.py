@@ -36,7 +36,14 @@ def updatePredStats():
 @app.route("/newTeam")
 def newTeam():
 	bestTeam = a1.pick_best_team([])
-	return render_template('newTeam.html', data = str(datetime.today().year))
+	keys = list(bestTeam.keys())
+	bestQBs = bestTeam[keys[0]]
+	bestRBs = bestTeam[keys[1]]
+	bestWRs = bestTeam[keys[2]]
+	bestTEs = bestTeam[keys[3]]
+	#print(bestTeam)
+	
+	return render_template('newTeam.html', data = {"best_team":bestTeam, "teams":keys, "bestQBs":bestQBs, "bestRBs":bestRBs,"bestWRs":bestWRs,"bestTEs":bestTEs})
 
 if __name__ == '__main__':
     app.run(debug=True)
