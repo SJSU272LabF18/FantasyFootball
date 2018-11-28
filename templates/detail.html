@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html>
 <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    /* Create two equal columns that floats next to each other */
-    .column {
-        float: left;
-        width: 25%;
-        padding: 10px;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+    
 </style>
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -32,28 +16,25 @@
 </head>
 
 <body>
-    <h1>Player Details</h1>
-    <br>
-        
-    <div class="row">
-        <p>Detail of a player</p>
-        <div class="column">
-            <img src="James_Butler.JPG" style="width: 200px; height: auto">
+    <div class="frosted-glass" style="height: auto; text-align: left; color: white; margin-bottom: 50px">
+        <h1 style="text-align: center;">Player Details</h1>
+        <hr>   
+        <div class="row">
+            <div class="column">
+                <img src="../static/James_Butler.JPG" style="width: 200px; height: auto">
+            </div>
+            <div class="column">
+                <ul>
+                    <li>Name: {{data["player"][1]}} {{data["player"][2]}}</li>
+                    {{data["player_record"]}}
+                    <li>Position: </li>
+                    <li>Rank: </li>
+                    <li>Team Played: </li>
+                    <li>Score: </li>
+                </ul>
+            </div>
         </div>
-        <div class="column">
-            <ul>
-                <li>Name: {{data["player"][1]}} {{data["player"][2]}}</li>
-                {{data["player_record"]}}
-                <li>Position: </li>
-                <li>Rank: </li>
-                <li>Team Played: </li>
-                <li>Score: </li>
-            </ul>
-        </div>
-    </div>
-    <div>
         <p>Analysis:</p>
     </div>
-    
 </body>
 </html>
