@@ -6,58 +6,60 @@
         <title>Fantasy Football</title>
     </head>
     <body>
-        <h1 class='text-center'>Recommend Team</h1>
-        <br>
-        <div class="d-block text-center">
-            <a href="playerPool"><button id="viewbtn"type="button" class="btn btn-info ">View Players</button></a>
-        </div>
-        <div class="pt-3 text-center">
-            <div class="card-group d-inline-flex text-center">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url_for('static', filename='James_Butler.JPG') }}" alt="Player Image">
-                            <div class="card-body">
-                                <h5 class="card-title">James_Butler</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
-                                <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
-                                </div>
+        <div class="frosted-glass" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
+            <h1>Recommend Team</h1>
+            <hr>
+            <div class="d-block text-center">
+                <a href="playerPool"><button id="viewbtn"type="button" class="btn btn-info ">View Players</button></a>
+            </div>
+            <div class="pt-3 text-center">
+                <div class="card-group d-inline-flex text-center">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='James_Butler.JPG') }}" alt="Player Image">
+                        <div class="card-body">
+                            <h5 class="card-title">James_Butler</h5>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                            <div class="btn-group" role="group">
+                                <button  type="button" class="btn btn-success">Lock in</button>
+                                <button  type="button" class="btn btn-danger">Remove</button>
                             </div>
                         </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url_for('static', filename='Mike_Hart.JPG') }}" alt="Player Image">
-                            <div class="card-body">
-                                <h5 class="card-title">Mike_Hart</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
-                                <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
-                                </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='Mike_Hart.JPG') }}" alt="Player Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Mike_Hart</h5>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                            <div class="btn-group" role="group">
+                                <button  type="button" class="btn btn-success">Lock in</button>
+                                <button  type="button" class="btn btn-danger">Remove</button>
                             </div>
                         </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url_for('static', filename='Richard_Quinn.JPG') }}" alt="Player Image">
-                            <div class="card-body">
-                                <h5 class="card-title">Richard_Quinn</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
-                                <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
-                                </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='Richard_Quinn.JPG') }}" alt="Player Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Richard_Quinn</h5>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                            <div class="btn-group" role="group">
+                                <button  type="button" class="btn btn-success">Lock in</button>
+                                <button  type="button" class="btn btn-danger">Remove</button>
                             </div>
                         </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url_for('static', filename='Jason_Taylor.JPG') }}" alt="Player Image">
-                            <div class="card-body">
-                                <h5 class="card-title">Jason_Taylor</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
-                                <div class="btn-group" role="group">
-                                    <button  type="button" class="btn btn-success">Lock in</button>
-                                    <button  type="button" class="btn btn-danger">Remove</button>
-                                </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='Jason_Taylor.JPG') }}" alt="Player Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Jason_Taylor</h5>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                            <div class="btn-group" role="group">
+                                <button  type="button" class="btn btn-success">Lock in</button>
+                                <button  type="button" class="btn btn-danger">Remove</button>
                             </div>
                         </div>
+                    </div>
                 </div>
+            </div>
         </div>
 
         <!-- Modal -->
