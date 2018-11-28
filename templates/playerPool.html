@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
     <head>
         <title>Fantasy Football</title>
     </head>
     <body>
+        <div class="frosted-glass" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
         <h1>Player List</h1>
-        <br>
-        <br>
+        <hr>
         <div>
-        {% for d in data:%}
-            <div style="display:inline-block;">
-            {{d}}
-            <br>
-            <a href="detail/{{d[0]}}"><img src="James_Butler.JPG" style="width: 250px; height: 250px"></a>
-            </div>
-        {% endfor %}
-        
-    </div> 
-
+            {% for d in data:%}
+                <div style="display:inline-block;">
+                {{d}}
+                <br>
+                <a href="detail/{{d[0]}}"><img src="./static/Jason_Tylor.JPG" style="width: 250px; height: 250px"></a>
+                </div>
+            {% endfor %}
+        </div> 
+    </div>
     </body>
 </html>

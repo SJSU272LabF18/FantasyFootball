@@ -3,22 +3,9 @@ body {
     background-size: cover;
 }
 
-button {
-    font-size: 20px;
-    border-radius: 12px;
-    border: 5px solid black;
-    padding: 10px 30px;
-}
-button:hover {
-    font-size: 20px;
-    border-radius: 12px;
-    border: 5px solid black;
-    padding: 10px 30px;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
 .frosted-glass {
     width: 60%;
-    height: auto;
+    height: 60%;
     background: inherit;
     position: absolute;
     top: 20%;
@@ -45,7 +32,7 @@ button:hover {
 }
 
 .btn{
-	font-size: 3em;
+	font-size: 2em;
 	border-radius: 15px;
 	border: #fff solid 9px;
 	color: #fff;
@@ -64,4 +51,8 @@ hr{
     font-size: 60px;
 	font-weight: bold;
     color: #fff;
+}
+
+.card-img-top {
+    height: 60%;
 }

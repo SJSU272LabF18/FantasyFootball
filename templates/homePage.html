@@ -3,6 +3,7 @@
 <head>
 	<!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,9 +13,12 @@
 	<title>Fantasy Football</title>
 </head>
 <body>
-    <h1>Home Page</h1>
-    <a href="newTeam"><button>Generate Team</button></a>
-    <a href="playerPool"><button>View Players</button></a>
-    <a href="admin"><button>admin</button></a>
+    <div class="frosted-glass">
+        <h1>Home Page</h1>
+        <hr>
+        <a href="newTeam"><button class="btn btn-info">Generate Team</button></a>
+        <a href="playerPool"><button class="btn btn-info">View Players</button></a>
+        <a href="admin"><button class="btn btn-info">admin</button></a>
+    </div>
 </body>
 </html>
