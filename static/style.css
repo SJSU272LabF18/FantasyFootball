@@ -5,7 +5,7 @@ body {
 
 .frosted-glass {
     width: 60%;
-    height: auto;
+    height: 60%;
     background: inherit;
     position: absolute;
     top: 20%;
@@ -32,7 +32,7 @@ body {
 }
 
 .btn{
-	font-size: 3em;
+	font-size: 2em;
 	border-radius: 15px;
 	border: #fff solid 9px;
 	color: #fff;
@@ -54,5 +54,5 @@ hr{
 }
 
 .card-img-top {
-    height: 70%;
+    height: 60%;
 }
