@@ -5,15 +5,15 @@
         <title>Fantasy Football</title>
     </head>
     <body>
-        <div class="frosted-glass" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
+        <div class="" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
         <h1>Player List</h1>
         <hr>
         <div>
             {% for d in data:%}
-                <div style="display:inline-block;">
+                <div  style="display:inline-block; background-color: white">
                 {{d}}
                 <br>
-                <a href="detail/{{d[0]}}"><img src="./static/Jason_Tylor.JPG" style="width: 250px; height: 250px"></a>
+                <a href="detail/{{d[0]}}"><img src="" style="width: 250px; height: 250px"></a>
                 </div>
             {% endfor %}
         </div> 

@@ -50,7 +50,7 @@ class Analyze:
 	def get_player_details(self, player_id):
 		mycursor = self.mysql.connection.cursor()
 		sql = "SELECT player_id, pos, team, year, games_played, rush, rush_yards, rush_td, target, catch, catch_yards, catch_td, pass, complete, pass_yards, pass_td, interceptions, fumbles FROM player_year_stats WHERE player_id = %s"
-		#print(val)
+		print(player_id)
 		mycursor.execute(sql, [int(player_id)])
 		myresult = mycursor.fetchall()
 		final_result = []
@@ -60,13 +60,14 @@ class Analyze:
 
 
 		mycursor = self.mysql.connection.cursor()
-		sql = "SELECT id,firstname,lastname FROM players"
+		sql = "SELECT id,firstname,lastname, predicted_score FROM players WHERE id = %s"
 		#print(val)
-		mycursor.execute(sql)
+		mycursor.execute(sql, [int(player_id)])
 		myresult = mycursor.fetchone()
 		player_detail = myresult
-
-
+		player_detail = list(player_detail)
+		print(player_detail)
+		player_detail[3] = float(player_detail[3])
 		return player_detail,final_result
 
 	def update_all_player_stats(self,year):

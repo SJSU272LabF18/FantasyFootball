@@ -3,15 +3,94 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
         <script type="text/javascript">
 
             
             $( document ).ready(function() {
                 
                 $(".changePlayer").change(function(){
-                    alert("chagned");
+                    // name_object = $(this).parents().find(".player-name").closest()
+                    // console.log(name_object)
+                    // player_id = $(this).val()
+                    // $.ajax({
+                    //   type: "POST",
+                    //   url: "/playerDetail",
+                    //   data: {player_id: player_id},
+                    //   dataType: "json",
+                    //   success: function(data) {
+                    //     console.log(name_object);
+                    //     name_object.html(data["player"][1]+" "+data["player"][2])
+                    //   },
+                    //   error: function(error) {
+                    //     alert(error);
+                    //   }
+                    // });
                 });
+
+                $(".player-detail").click(function(){
+                    player_id = $(this).siblings().find(".changePlayer").val();
+                    console.log(player_id)
+                    $.ajax({
+                      type: "POST",
+                      url: "/playerDetail",
+                      data: {player_id: player_id},
+                      dataType: "json",
+                      success: function(data) {
+                        console.log(data);
+                        $(".detail-name").html(data["player"][1]+" "+data["player"][2]);
+                        let positions = {}
+                        let games_played = 0;
+                        let i;
+                        for(i=0; i < data["player_record"].length; i++){
+                            positions[data["player_record"][i][1]] = 1
+                            games_played+=data["player_record"][i][4]
+                        }
+                        $("#positions").html(Object.keys(positions));
+                        $("#games_played").html(games_played);
+                        $("#score").html(data["player"][3]);
+                      },
+                      error: function(error) {
+                        alert(error);
+                      }
+                    });
+                });
+
+                $(".save").click(function(){
+                    let save_player_id = 0;
+                    let position = ""
+                    if($(this).hasClass("RB")){
+                        save_player_id = $("#changeRB").val();
+                        position = "RB";
+                    }
+                    else if($(this).hasClass("QB")){
+                        save_player_id = $("#changeQB").val();
+                        position = "QB";
+                    }
+                    else if($(this).hasClass("WR")){
+                        save_player_id = $("#changeWR").val();
+                        position = "WR";
+                    }
+                    else if($(this).hasClass("TE")){
+                        save_player_id = $("#changeTE").val();
+                        position = "TE";
+                    }
+                    console.log(save_player_id);
+                    console.log(position);
+                    $.ajax({
+                      type: "POST",
+                      url: "/savePlayer",
+                      data: {player_id: save_player_id, position: position},
+                      dataType: "json",
+                      success: function(data) {
+                        alert("Successfully saved");
+                      },
+                      error: function(error) {
+                        alert(error);
+                      }
+                    });
+                });
+                
             });
         </script>
 
@@ -29,83 +108,114 @@
                  
                 
                         <div class="card">
-                            <h1>{{data["teams"][0]}}</h1>
+                            <h1 class = "player-name">{{data["teams"][0]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='James_Butler.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">{{data["bestQBs"][0]}}</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                                
+                                <button type="button" class="player-detail btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
                                     <select class = "changePlayer" id = "changeQB" name="player">
-                                        
+                                        <!--player = [6965, 'RB', 'Quentin', 'Griffin', Decimal('110')]-->
                                         {%for player in data["bestQBs"]:%}
-                                            
-                                            <option value = "{{player}}">{{player}}</option>
-                                            
+                                            {% if session["QB"]|string == player[0]|string%}
+                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            {% else %}
+                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            {% endif%}
                                         {% endfor %}
                                     </select>
                                 </div>
+                                <div class="center">
+                                        <button type="button" class="btn btn-success save QB">Lock in</button>
+                                    </div>
                             </div>
                         </div>
                         <div class="card">
-                            <h1>{{data["teams"][1]}}</h1>
+                            <h1 class = "player-name">{{data["teams"][1]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='Mike_Hart.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">{{data["bestRBs"][0]}}</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                                
+                                <button type="button" class="player-detail btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
                                     <select class = "changePlayer" id = "changeRB" name="player">
                                         
                                         {%for player in data["bestRBs"]:%}
                                             
-                                            <option value = "{{player}}">{{player}}</option>
+                                            {% if session["RB"]|string == player[0]|string%}
+                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            {% else %}
+                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            {% endif%}
                                             
                                         {% endfor %}
                                     </select>
                                 </div>
+                                <div class="center">
+                                        <button type="button" class="btn btn-success save RB">Lock in</button>
+                                    </div>
                             </div>
                         </div>
                         <div class="card">
-                            <h1>{{data["teams"][2]}}</h1>
-                            <img class="card-img-top" src="{{ url_for('static', filename='Richard_Quinn.JPG') }}" alt="Player Image">
-                            <div class="card-body">
-                                <h5 class="card-title">{{data["bestWRs"][0]}}</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
-                                <div class="btn-group" role="group">
-                                    <select class = "changePlayer" id = "changeWR" name="player">
-                                        
-                                        {%for player in data["bestWRs"]:%}
-                                            
-                                            <option value = "{{player}}">{{player}}</option>
-                                            
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h1>{{data["teams"][3]}}</h1>
+                            <h1 class = "player-name">{{data["teams"][2]}}</h1>
                             <img class="card-img-top" src="{{ url_for('static', filename='Jason_Taylor.JPG') }}" alt="Player Image">
                             <div class="card-body">
-                                <h5 class="card-title">{{data["bestTEs"][0]}}</h5>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                                
+                                <button type="button" class="player-detail btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
                                 <div class="btn-group" role="group">
                                     <select class = "changePlayer" id = "changeTE" name="player">
                                         
                                         {%for player in data["bestTEs"]:%}
                                             
-                                            <option value = "{{player}}">{{player}}</option>
+                                            {% if session["TE"]|string == player[0]|string%}
+                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            {% else %}
+                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            {% endif%}
                                             
                                         {% endfor %}
                                     </select>
                                 </div>
-
+                                <div class="center">
+                                        <button type="button" class="btn btn-success save TE">Lock in</button>
+                                    </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <h1 class = "player-name">{{data["teams"][3]}}</h1>
+                            <img class="card-img-top" src="{{ url_for('static', filename='Richard_Quinn.JPG') }}" alt="Player Image">
+                            <div class="card-body">
+                                
+                                <button type="button" class="player-detail btn btn-primary" data-toggle="modal" data-target="#PlayerDetailModal">Player Detail</button>
+                                <div class="btn-group" role="group">
+                                    <select class = "changePlayer" id = "changeWR" name="player">
+                                        
+                                        {%for player in data["bestWRs"]:%}
+                                            
+                                            {% if session["WR"]|string == player[0]|string%}
+                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            {% else %}
+                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            {% endif%}
+                                            
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="center">
+                                        <button type="button" class="btn btn-success save WR">Lock in</button>
+                                    </div>
+                            </div>
+                        </div>
+                        
+
+
+                        
+
+
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="PlayerDetailModal" tabindex="-1" role="dialog" aria-labelledby="PlayerDetailModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -121,19 +231,17 @@
                             <div class="card">
                                 <img class="card-img-top" src="{{ url_for('static', filename='Jason_Taylor.JPG') }}" alt="Player Image">
                                 <div class="card-body">
-                                    <h5 class="card-title">Analysis</h5>
+                                   <!--  <h5 class="card-title">Analysis</h5> -->
                                 </div>
                                 </div>
                             <div class="card">
                                 <div class="card-body">
-                                <h5 class="card-title">James_Butler</h5>
+                                <h5 class="card-title detail-name">James_Butler</h5>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Name: First Last</li>
-                                    <li class="list-group-item">Record: N/A</li>
-                                    <li class="list-group-item">Position: QB</li>
-                                    <li class="list-group-item">Rank: 1</li>
-                                    <li class="list-group-item">Team Played: 1</li>
-                                    <li class="list-group-item">Score: 100</li>
+                                    
+                                    <li class="list-group-item">Position(s): <span id = "positions"></span></li>
+                                    <li class="list-group-item">Games Played: <span id = "games_played"></span></li>
+                                    <li class="list-group-item">Score: <span id = "score"></span></li>
                                 </ul>
                                 </div>
                             </div>
@@ -146,7 +254,7 @@
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>

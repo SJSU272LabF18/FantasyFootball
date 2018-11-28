@@ -56,3 +56,12 @@ hr{
 .card-img-top {
     height: 60%;
 }
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 10px;
+}
+.card-body{
+
+}
