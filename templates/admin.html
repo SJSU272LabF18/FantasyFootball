@@ -18,9 +18,11 @@
         <form action = "updatePredStats" method = "GET">
 
             <label>Year
-                <input name = "year" type="number" min="{{data}}" value="{{data}}">
+                <input name = "year" type="number" min="{{data['year']}}" value="{{data['year']}}">
             </label>
             <button>Update Predicted Stats</button>
+            <h2>{{data['message']}}</h2>
+
         </form>
     </div>
 </body>

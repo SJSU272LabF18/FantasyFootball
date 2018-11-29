@@ -35,12 +35,12 @@ def detail(player_id):
 
 @app.route("/admin")
 def admin():
-	return render_template('admin.html',data = str(datetime.today().year))
+	return render_template('admin.html',data = {"year":str(datetime.today().year), "message":""})
 
 @app.route("/updatePredStats", methods=['GET'])
 def updatePredStats():
 	a1.update_all_player_stats(int(request.args.get('year')))
-	return render_template('admin.html', data = str(datetime.today().year))
+	return render_template('admin.html', data =  {"year":str(datetime.today().year), "message":"successfully updated"})
 
 @app.route("/playerDetail", methods=['POST'])
 def playerDetail():
