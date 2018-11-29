@@ -123,9 +123,9 @@
                                         <!--player = [6965, 'RB', 'Quentin', 'Griffin', Decimal('110')]-->
                                         {%for player in data["bestQBs"]:%}
                                             {% if session["QB"]|string == player[0]|string%}
-                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            <option value = "{{player[0]}}" selected>{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% else %}
-                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            <option value = "{{player[0]}}" >{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% endif%}
                                         {% endfor %}
                                     </select>
@@ -147,9 +147,9 @@
                                         {%for player in data["bestRBs"]:%}
                                             
                                             {% if session["RB"]|string == player[0]|string%}
-                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            <option value = "{{player[0]}}" selected>{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% else %}
-                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            <option value = "{{player[0]}}" >{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% endif%}
                                             
                                         {% endfor %}
@@ -172,9 +172,9 @@
                                         {%for player in data["bestTEs"]:%}
                                             
                                             {% if session["TE"]|string == player[0]|string%}
-                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            <option value = "{{player[0]}}" selected>{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% else %}
-                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            <option value = "{{player[0]}}" >{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% endif%}
                                             
                                         {% endfor %}
@@ -197,9 +197,9 @@
                                         {%for player in data["bestWRs"]:%}
                                             
                                             {% if session["WR"]|string == player[0]|string%}
-                                            <option value = "{{player[0]}}" selected>{{player}}</option>
+                                            <option value = "{{player[0]}}" selected>{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% else %}
-                                            <option value = "{{player[0]}}" >{{player}}</option>
+                                            <option value = "{{player[0]}}" >{{player[2] +" "+ player[3] +" Points: " +player[4]|string}}</option>
                                             {% endif%}
                                             
                                         {% endfor %}
@@ -247,15 +247,17 @@
                                     <li class="list-group-item">Position(s): <span id = "positions"></span></li>
                                     <li class="list-group-item">Games Played: <span id = "games_played"></span></li>
                                     <li class="list-group-item">Score: <span id = "score"></span></li>
-                                    <li class="list-group-item">Yearly Stats: <span id = "yearly_stats"></span></li>
+                                    <li class="list-group-item">Yearly Stats: <span id = "yearly_stats"></span>
+                                        
+                                    </li>
                                 </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success">Lock in</button>
                     </div>
                 </div>
             </div>
