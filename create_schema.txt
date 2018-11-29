@@ -6,8 +6,10 @@ CREATE TABLE players (
   id int(11) NOT NULL AUTO_INCREMENT,
   firstname varchar(45) DEFAULT NULL,
   lastname varchar(45) DEFAULT NULL,
+  predicted_score decimal(65,0) DEFAULT '0',
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=3444 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7130 DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE player_year_stats (
   pos varchar(45) DEFAULT NULL,
