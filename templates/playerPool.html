@@ -6,12 +6,12 @@
     </head>
     <body>
         <div class="" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
-        <h1>Player List</h1>
+        <h1>Player Pool</h1>
         <hr>
         <div>
             {% for d in data:%}
                 <div  style="display:inline-block; background-color: white">
-                {{d}}
+                {{d[1]}} {{d[2]}}
                 <br>
                 <a href="detail/{{d[0]}}"><img src="" style="width: 250px; height: 250px"></a>
                 </div>

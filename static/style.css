@@ -83,3 +83,12 @@ hr{
     text-align: center;
     margin-top: 10px;
 }
+table, th, td {
+   border: 1px solid #fff;
+}
+td,th{
+    padding: 3px;
+}
+h1{
+    text-align: center;
+}

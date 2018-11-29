@@ -23,17 +23,47 @@
             <div class="column">
                 <img src="../static/James_Butler.JPG" style="width: 200px; height: auto">
             </div>
-            <div class="column">
+            <div class="" style="font-size: 1.3em">
                 <ul>
                     <li>Name: {{data["player"][1]}} {{data["player"][2]}}</li>
                     <li>Position(s): {{data["positions"]}}</li>
                     <li>Games Played: {{data["games_played"]}}</li>
                     <li>Score: {{data["player"][3]}}</li>
-                    <li>Yearly Stats: {{data["player_record"]}}</li>
+                    
+
+                    
                 </ul>
             </div>
         </div>
-        <p>Analysis:</p>
+        <p>Yearly Stats:
+        </p><table style="border: solid 1 #000">
+                        
+                        <th>pos</th>
+                        <th>team</th>
+                        <th>year</th>
+                        <th>games_played</th>
+                        <th>rush</th>
+                        <th>rush_yards</th>
+                        <th>rush_td</th>
+                        <th>target</th>
+                        <th>catch</th>
+                        <th>catch_yards</th>
+                        <th>catch_td</th>
+                        <th>pass</th>
+                        <th>complete</th>
+                        <th>pass_yards</th>
+                        <th>pass_td</th>
+                        <th>interceptions</th>
+                        <th>fumbles</th>
+                        <th>points</th>
+                    {% for record in data["player_record"]:%}
+                        <tr>
+                        {% for stat in record[1:]:%}
+                        <td>{{stat}}</td>
+                        {% endfor%}
+                        </tr>
+                    {% endfor%}
+                    </table>
     </div>
 </body>
 </html>

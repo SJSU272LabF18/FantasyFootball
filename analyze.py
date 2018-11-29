@@ -49,13 +49,15 @@ class Analyze:
 
 	def get_player_details(self, player_id):
 		mycursor = self.mysql.connection.cursor()
-		sql = "SELECT player_id, pos, team, year, games_played, rush, rush_yards, rush_td, target, catch, catch_yards, catch_td, pass, complete, pass_yards, pass_td, interceptions, fumbles FROM player_year_stats WHERE player_id = %s"
+		sql = "SELECT player_id, pos, team, year, games_played, rush, rush_yards, rush_td, target, catch, catch_yards, catch_td, pass, complete, pass_yards, pass_td, interceptions, fumbles,points FROM player_year_stats WHERE player_id = %s"
 		print(player_id)
 		mycursor.execute(sql, [int(player_id)])
 		myresult = mycursor.fetchall()
 		final_result = []
 
 		for result in myresult:
+			result = list(result)
+			result[18] = float(result[18])
 			final_result.append(result)
 
 
