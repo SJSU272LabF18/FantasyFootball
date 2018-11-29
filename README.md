@@ -17,12 +17,12 @@ Classify clusters using various nearest neighbors algorithms such as kNN, LSH. U
 ## Project Idea 2 Title: 
 Fantasy Football Team Creator
 ## Project Description:
-Creates the ideal team based on currently available players. Normalizes each player's statistics with their team's overall performance so that players in excelling teams do not outweigh other players. Users may input players who have been taken and the system to consider only the remaining the players to pick the best team. 
+Creates the ideal team based on currently available players. Users are recommended the top players based on the predicted score of each player based on linear regression models generated for each player. Allow users to browse player pools, view player details, and save players.
 ## Proposed Methodology/Resources:
 ### Resources:
-1672 player stats from 2014 - 2017 with attributes:
+7601 player stats from 2003 - 2017 with attributes:
 Name, Pos, Team, Year, Games Plyd, Rush, Rush Yards, Rush TD, Target, Catch, Catch yards, Catch TD, Pass, Complete, Pass Yards, Pass TD, Int, Fum
 http://thehuddle.com/fantasy_football_statistics_archive.php
-### Development Stack:
-MERN- MongoDB, Express, React, Node
-Identify players with high performance relative to their teams using unsupervised clustering algorithms such as kmeans. 
+### Methodology:
+MySQL, Flask, Bootstrap, HTML/CSS
+Identify players with high performance based on their predicted 2018 scores using multiple Linear Regression Models.
