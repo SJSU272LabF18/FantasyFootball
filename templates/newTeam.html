@@ -49,6 +49,11 @@
                         $("#positions").html(Object.keys(positions));
                         $("#games_played").html(games_played);
                         $("#score").html(data["player"][3]);
+                        yearly_stats = "";
+                        for(i=0; i < data["player_record"].length; i++){
+                            yearly_stats+= data["player_record"][i] + "<br>"
+                        }
+                        $("#yearly_stats").html(yearly_stats)
                       },
                       error: function(error) {
                         alert(error);
@@ -242,6 +247,7 @@
                                     <li class="list-group-item">Position(s): <span id = "positions"></span></li>
                                     <li class="list-group-item">Games Played: <span id = "games_played"></span></li>
                                     <li class="list-group-item">Score: <span id = "score"></span></li>
+                                    <li class="list-group-item">Yearly Stats: <span id = "yearly_stats"></span></li>
                                 </ul>
                                 </div>
                             </div>

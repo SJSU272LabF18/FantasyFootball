@@ -26,7 +26,12 @@ def playerPool():
 @app.route("/detail/<player_id>")
 def detail(player_id):
 	player, player_record = a1.get_player_details(player_id)
-	return render_template('detail.html',data = {"player":player,"player_record":player_record})
+	games_played = 0
+	positions = {}
+	for record in player_record:
+		positions[record[1]] = 1
+		games_played+=record[4]
+	return render_template('detail.html',data = {"player":player,"player_record":player_record,"positions":list(positions.keys()), "games_played":games_played})
 
 @app.route("/admin")
 def admin():
@@ -51,13 +56,13 @@ def savePlayer():
 
 @app.route("/newTeam")
 def newTeam():
-	if session["QB"] == None:
+	if "QB" not in session:
 		session["QB"] = -1
-	if session["WR"] == None:
+	if "WR" not in session:
 		session["WR"] = -1
-	if session["TE"] == None:
+	if "TE" not in session:
 		session["TE"] = -1
-	if session["RB"] == None:
+	if "RB" not in session:
 		session["RB"] = -1
 
 	bestTeam = a1.pick_best_team([])

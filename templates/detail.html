@@ -26,11 +26,10 @@
             <div class="column">
                 <ul>
                     <li>Name: {{data["player"][1]}} {{data["player"][2]}}</li>
-                    {{data["player_record"]}}
-                    <li>Position: </li>
-                    <li>Rank: </li>
-                    <li>Team Played: </li>
-                    <li>Score: </li>
+                    <li>Position(s): {{data["positions"]}}</li>
+                    <li>Games Played: {{data["games_played"]}}</li>
+                    <li>Score: {{data["player"][3]}}</li>
+                    <li>Yearly Stats: {{data["player_record"]}}</li>
                 </ul>
             </div>
         </div>
