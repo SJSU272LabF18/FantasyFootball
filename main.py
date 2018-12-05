@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template,redirect, url_for,session
+from flask import Flask, request, render_template,redirect, url_for,session,make_response 
 from flask_mysqldb import MySQL
 from datetime import datetime
 import json
@@ -50,20 +50,26 @@ def playerDetail():
 
 @app.route("/savePlayer", methods=['POST'])
 def savePlayer():
-	session[request.form['position']] = request.form['player_id']
-	print(session)
-	return json.dumps({'status':'OK'});
+	# session[request.form['position']] = request.form['player_id']
+	# print(session)
+	# return json.dumps({'status':'OK'});
+	bestTeam = a1.pick_best_team([])
+	keys = list(bestTeam.keys())
+	keys.sort()
+	bestQBs = bestTeam[keys[0]]
+	bestRBs = bestTeam[keys[1]]
+	bestTEs = bestTeam[keys[2]]
+	bestWRs = bestTeam[keys[3]]
+	player, player_record = a1.get_player_details(int(request.form['player_id']))
+	resp = make_response(json.dumps({'status':'OK', 'player':player, "position":request.form['position']}))
+	resp.set_cookie(request.form['position'], request.form['player_id'])
+   
+	return resp
 
 @app.route("/newTeam")
 def newTeam():
-	if "QB" not in session:
-		session["QB"] = -1
-	if "WR" not in session:
-		session["WR"] = -1
-	if "TE" not in session:
-		session["TE"] = -1
-	if "RB" not in session:
-		session["RB"] = -1
+
+	
 
 	bestTeam = a1.pick_best_team([])
 	keys = list(bestTeam.keys())
