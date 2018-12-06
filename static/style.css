@@ -4,11 +4,11 @@ body {
 }
 
 .frosted-glass {
-    width: 60%;
-    height: 60%;
+    /*width: 60%;*/
+    /*height: 60%;*/
     background: inherit;
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 20%;
     z-index: 1;
     overflow: hidden;

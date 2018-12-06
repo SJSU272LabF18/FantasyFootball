@@ -12,44 +12,7 @@
             
             $( document ).ready(function() {
                 
-                // create chart
-                var ctx = document.getElementById("myChart").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                        datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero:true
-                                }
-                            }]
-                        }
-                    }
-                });
+                
 
 
                 $(".changePlayer").change(function(){
@@ -92,11 +55,27 @@
                         $("#positions").html(Object.keys(positions));
                         $("#games_played").html(games_played);
                         $("#score").html(data["player"][3]);
-                        yearly_stats = "";
+                        x_coord = [];
+                        y_coord = [];
                         for(i=0; i < data["player_record"].length; i++){
-                            yearly_stats+= data["player_record"][i] + "<br>"
+                            x_coord.push(parseFloat(data["player_record"][i][3]))
+                            y_coord.push(parseFloat(data["player_record"][i][18]))
                         }
                         $("#yearly_stats").html(yearly_stats)
+                        // create chart
+                        console.log(yearly_stats);
+                        var ctx = document.getElementById("myChart").getContext('2d');
+                        options =  {
+                            title: {
+                              display: true,
+                              text: 'Yearly Points Change'
+                            }
+                        };
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {labels: x_coord, datasets: [{data:y_coord, label: "Yearly Points",fill:false,borderColor: "#3e95cd"}]},
+                            options: options
+                        });
                       },
                       error: function(error) {
                         alert(error);

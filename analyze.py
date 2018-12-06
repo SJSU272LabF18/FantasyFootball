@@ -36,7 +36,7 @@ class Analyze:
 
 	def get_sorted_players(self, sort_by = "pos"):
 		mycursor = self.mysql.connection.cursor()
-		sql = "SELECT id,firstname,lastname FROM players"
+		sql = "SELECT id,firstname,lastname FROM players ORDER BY firstname"
 		#print(val)
 		mycursor.execute(sql)
 		myresult = mycursor.fetchall()

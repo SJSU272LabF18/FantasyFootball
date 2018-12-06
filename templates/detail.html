@@ -12,7 +12,43 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <title>Fantasy Football</title>
+    <style type="text/css">
+        #myChart{
+            background-color: #fff;
+            border-radius: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+                        x_coord = [];
+                        y_coord = [];
+                        {% set x_coord = []%}
+                        {% set y_coord = []%}
+                        {% for record in data["player_record"]:%}
+                            "{{ x_coord.append(record[3])}}"
+                           "{{ y_coord.append(record[18])}}"
+                            
+                        {% endfor%}
+                        x_coord = {{x_coord|tojson|safe}}
+                        y_coord = {{y_coord|tojson|safe}}
+                        // create chart
+                        var ctx = document.getElementById("myChart").getContext('2d');
+                        options =  {
+                            title: {
+                              display: true,
+                              text: 'Yearly Points Change'
+                            }
+                        };
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {labels: x_coord, datasets: [{data:y_coord, label: "Yearly Points",fill:false,borderColor: "#3e95cd"}]},
+                            options: options
+                        });
+                    });
+    </script>
 </head>
 
 <body>
@@ -36,7 +72,11 @@
             </div>
         </div>
         <p>Yearly Stats:
-        </p><table style="border: solid 1 #000">
+
+        </p>
+        <canvas id="myChart"></canvas>
+        <br>
+        <table style="border: solid 1 #000">
                         
                         <th>pos</th>
                         <th>team</th>

@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .player-box{
+            border-radius: 20px;
+        }
+    </style>
     <head>
         <title>Fantasy Football</title>
     </head>
     <body>
-        <div class="" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px">
+        <div class="" style="width: auto; height: auto; left: 20px; right: 20px; top: 20px; bottom: 20px;text-align: center">
         <h1>Player Pool</h1>
         <hr>
         <div>
             {% for d in data:%}
-                <div  style="display:inline-block; background-color: white">
-                {{d[1]}} {{d[2]}}
+                <div class = "player-box"  style="display:inline-block; background-color: white">
+                <h4>{{d[1]}} {{d[2]}}</h4>
                 <br>
                 <a href="detail/{{d[0]}}"><img src="" style="width: 250px; height: 250px"></a>
                 </div>
