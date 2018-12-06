@@ -23,4 +23,4 @@ Run: 3.16.111.89
 1. Extract the zipped file in your location.
 2. Run python db_data_load.py, to store the database in your MYSQL WorkBench.
 3. Run python main.py, to launch the Fantasy Football Team Creator.
-4. In your browser open https://localhost:5000
+4. In your browser open https://localhost:5000 to access the system.
